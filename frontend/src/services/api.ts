@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // API Base URL - uses environment variable or production URL as default
 const API_BASE_URL = import.meta.env.VITE_API_URL ||
-    (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://hrms-backend-rose.vercel.app/api');
+    (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://hrms-gy-be.vercel.app/api');
 
 // Create axios instance
 const api = axios.create({

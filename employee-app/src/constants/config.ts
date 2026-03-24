@@ -2,7 +2,7 @@
 // In development: uses local network IP so device can connect
 // In production: uses Vercel deployment URL
 const DEV_API_URL = 'http://10.159.5.141:5000/api';
-const PROD_API_URL = 'https://hrms-backend-rose.vercel.app/api';
+const PROD_API_URL = 'https://hrms-gy-be.vercel.app/api';
 export const API_BASE_URL = __DEV__ ? DEV_API_URL : PROD_API_URL;
 
 // App Configuration

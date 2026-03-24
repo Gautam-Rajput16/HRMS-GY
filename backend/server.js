@@ -46,7 +46,7 @@ const corsOptions = {
             'http://localhost:5173',
             'http://localhost:3000',
             'https://attendiify.netlify.app',
-            'https://hrms-backend-rose.vercel.app',
+
         ].filter(Boolean);
 
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
