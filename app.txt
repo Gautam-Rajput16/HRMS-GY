@@ -1,0 +1,4 @@
+npx eas-cli build --platform android --profile preview-apk
+
+
+npx eas-cli build --platform android --profile preview-aab
