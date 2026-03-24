@@ -1,8 +1,16 @@
-const { Expo } = require('expo-server-sdk');
 const PushToken = require('../models/PushToken');
 
-// Create a new Expo SDK client
-const expo = new Expo();
+let ExpoClass;
+let expoInstance;
+
+const getExpo = async () => {
+    if (!ExpoClass) {
+        const module = await import('expo-server-sdk');
+        ExpoClass = module.Expo;
+        expoInstance = new ExpoClass();
+    }
+    return { Expo: ExpoClass, expo: expoInstance };
+};
 
 /**
  * Get shift timing from environment variables
@@ -29,6 +37,7 @@ const formatHour = (hour) => {
  */
 const sendPushNotification = async (employeeId, { title, body, data = {} }) => {
     try {
+        const { Expo, expo } = await getExpo();
         const tokens = await PushToken.getTokensForEmployee(employeeId);
 
         if (!tokens || tokens.length === 0) {
@@ -102,6 +111,7 @@ const sendPushNotification = async (employeeId, { title, body, data = {} }) => {
  */
 const sendBulkNotifications = async (employeeIds, { title, body, data = {} }) => {
     try {
+        const { Expo, expo } = await getExpo();
         const tokenDocs = await PushToken.getTokensForEmployees(employeeIds);
 
         if (!tokenDocs || tokenDocs.length === 0) {
